@@ -1,0 +1,49 @@
+# The Long Road - v0.1 (Milestone 1)
+# Settlement loop only (no expedition yet)
+
+ROAD_GOAL = 10
+
+# Starting stats
+player_max_hp = 12
+player_hp = 12
+player_max_stamina = 8
+player_stamina = 8
+combat_rating = 0
+
+food = 10
+materials = 0
+settlement_health = 10
+road_progress = 0
+
+day = 1
+
+while True:
+    print("\n" + "=" * 40)
+    print("THE LONG ROAD  |  Day", day)
+    print("=" * 40)
+
+    print("\n--- Player ---")
+    print("HP:", player_hp, "/", player_max_hp)
+    print("Stamina:", player_stamina, "/", player_max_stamina)
+    print("Combat Rating:", combat_rating)
+
+    print("\n--- Settlement ---")
+    print("Food:", food)
+    print("Materials:", materials)
+    print("Settlement Health:", settlement_health, "/ 10")
+    print("Road:", road_progress, "/", ROAD_GOAL)
+
+    print("\nChoose an action:")
+    print("1) Go on expedition (not built yet)")
+    print("2) Build/Upgrade (not built yet)")
+    print("3) Rest (not built yet)")
+    print("4) Quit")
+
+    choice = input("> ").strip()
+
+    if choice == "4":
+        print("Goodbye.")
+        break
+    else:
+        print("That option isn't implemented yet.")
+        input("Press Enter to continue...")
