@@ -1,70 +1,71 @@
-mport pygame
+import pygame
 import sys
 
-Initialize pygame
+# Initialize pygame
 pygame.init()
 
-Create a full screen window
+# Create a full screen window
 screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption("Mouse Shape Game")
 
-Get screen size
+# Get screen size
 WIDTH, HEIGHT = screen.get_size()
 
-Colors
+# Colors
 BLACK = (0, 0, 0)
 BLUE = (50, 150, 255)
 RED = (255, 80, 80)
 GREEN = (80, 255, 80)
 
-Shape sizes
+# Shape sizes
 PLAYER_RADIUS = 20
 TARGET_RADIUS = 25
 MARK_RADIUS = 5
 
-Target starts in the center
+# Target starts in the center
 target_x = WIDTH // 2
 target_y = HEIGHT // 2
 
-Last click position
+# Last click position
 click_pos = None
 
-Clock for frame rate
+# Clock for frame rate
 clock = pygame.time.Clock()
 
 running = True
 while running:
-for event in pygame.event.get():
-if event.type == pygame.QUIT:
-running = False
-
-    # Exit with ESC key
-    if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_ESCAPE:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
             running = False
 
-    # Mouse click
-    if event.type == pygame.MOUSEBUTTONDOWN:
-        click_pos = event.pos
-        target_x, target_y = click_pos
+        # Exit with ESC key
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                running = False
 
-# Mouse-controlled shape
-mouse_x, mouse_y = pygame.mouse.get_pos()
+        # Mouse click
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            click_pos = event.pos
+            target_x, target_y = click_pos
 
-# Draw everything
-screen.fill(BLACK)
+    # Mouse-controlled shape
+    mouse_x, mouse_y = pygame.mouse.get_pos()
 
-# Draw player (follows mouse)
-pygame.draw.circle(screen, BLUE, (mouse_x, mouse_y), PLAYER_RADIUS)
+    # Draw everything
+    screen.fill(BLACK)
 
-# Draw target (moves on click)
-pygame.draw.circle(screen, RED, (target_x, target_y), TARGET_RADIUS)
+    # Draw player (follows mouse)
+    pygame.draw.circle(screen, BLUE, (mouse_x, mouse_y), PLAYER_RADIUS)
 
-# Draw click marker
-if click_pos:
-    pygame.draw.circle(screen, GREEN, click_pos, MARK_RADIUS)
+    # Draw target (moves on click)
+    pygame.draw.circle(screen, RED, (target_x, target_y), TARGET_RADIUS)
 
-pygame.display.flip()
-clock.tick(60)
+    # Draw click marker
+    if click_pos:
+        pygame.draw.circle(screen, GREEN, click_pos, MARK_RADIUS)
+
+    pygame.display.flip()
+    clock.tick(60)
+
 pygame.quit()
 sys.exit()
